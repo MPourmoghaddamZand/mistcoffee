@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    @apply font-[Pinar];
+}
 
 /* @font-face {
     font-family: 'trajan-regular';
