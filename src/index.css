@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* @font-face {
+    font-family: 'trajan-regular';
+    src: url('/public/fonts/TrajanPro-Regular.ttf') format("ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'trajan-bold';
+    src: url('/public/fonts/TrajanPro-Bold.otf') format("ttf");
+    font-weight: normal;
+    font-style: normal;
+} */
