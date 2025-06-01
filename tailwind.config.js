@@ -9,8 +9,8 @@ export default {
         myaccent: '#FFD98C',
         myneutral: '#FFB673',
         mybase: '#FFD98C',
-        myhardbrown: "372112",
-        myback: "FFD98C",
+        myhardbrown: "#372112",
+        myback: "#FFF4DF",
 
       },
       backgroundColor: {
@@ -19,8 +19,8 @@ export default {
         myaccent: '#FFD98C',
         myneutral: '#FFB673',
         mybase: '#FFD98C',
-        myhardbrown: "372112",
-        myback: "FFD98C"
+        myhardbrown: "#372112",
+        myback: "#FFF4DF"
       },
       fontFamily: {
         trajan: 'Trajan Pro',
