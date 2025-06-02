@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App/>
+    <div className='overflow-x-hidden'>
+      <App />
+    </div>
   </StrictMode>,
 )

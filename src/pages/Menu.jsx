@@ -1,20 +1,18 @@
-import React from 'react'
+import Category from "../components/Layout/Category"
+import Hero from "../components/Layout/Hero"
+import Reward from "../components/Layout/Reward"
+import Product from "../components/Layout/Product"
+import Navbar from "../components/navbar/Navbar"
 
-
-const Navbar = () => {
-  return (
-    <nav className='w-full h-24 flex items-center justify-between px-4'>
-        <div></div>
-        <div></div>
-        <div></div>
-    </nav>
-  )
-}
 
 const Menu = () => {
   return (
     <div className='w-full min-h-screen h-full bg-myback'>
       <Navbar />
+      <Reward />
+      <Hero />
+      <Category />
+      <Product />
     </div>
   )
 }
