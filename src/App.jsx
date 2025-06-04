@@ -2,6 +2,7 @@ import React from 'react'
 import Starter from './pages/Starter'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Menu from './pages/Menu'
+import Search from './pages/Search'
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
       <Routes>
           <Route path='/' element={<Starter />} />
           <Route path='/menu' element={<Menu />} />
-          <Route path='/search' element={<></>} />
+          <Route path='/search' element={<Search />} />
           <Route path='/profile' element={<></>} />
           <Route path='/shopcart' element={<></>} />
           <Route path='/ordercallback' element={<></>} />

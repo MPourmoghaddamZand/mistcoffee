@@ -10,7 +10,18 @@
     @apply grid place-content-center
 }
 
+.flexCenter {
+    @apply flex justify-center items-center
+}
+
+
+
 @layer utilities {
+
+    .round {
+        @apply rounded-[28px]
+    }
+
     .no-scrollbar::-webkit-scrollbar {
         display: none;
     }
