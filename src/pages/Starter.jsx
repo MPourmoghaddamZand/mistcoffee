@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Input from "../components/utils/Inputs/Input";
 import Button from "../components/utils/buttons/Button";
+import { useNavbarContext } from "../context/NavbarProvider";
 
 const NameSection = () => {
+     
     return (
         <div className="relative">
             <h1 className="font-[Ray] font-black text-myprimary text-[94px] leading-[94px] text-center">

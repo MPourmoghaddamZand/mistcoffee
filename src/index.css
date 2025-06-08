@@ -15,6 +15,9 @@
 }
 
 
+.all-unset{
+    all: unset;   
+}
 
 @layer utilities {
 
