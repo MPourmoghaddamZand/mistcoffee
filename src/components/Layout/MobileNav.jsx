@@ -7,13 +7,13 @@ import { useNavbarContext } from "../../context/NavbarProvider";
 
 const navMenu = [
   { name: "خانه", path: "/menu", icon: <FaHome size={30} /> },
-  { name: "سفارش ها", path: "/products", icon: <HiViewGrid size={30} /> },
+  { name: "سفارش ها", path: "/orders", icon: <HiViewGrid size={30} /> },
   {
     name: "درباره ما",
     path: "/about",
     icon: <HiInformationCircle size={30} />,
   },
-  { name: "پروفایل", path: "/contact", icon: <CgProfile size={30} /> },
+  { name: "پروفایل", path: "/profile", icon: <CgProfile size={30} /> },
 ];
 
 const MobileNav = () => {

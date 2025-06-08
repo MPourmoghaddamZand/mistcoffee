@@ -16,6 +16,7 @@ const Menu = () => {
       <Hero />
       <Category />
       <Product />
+      <div className="h-28"/>
     </div>
   );
 };

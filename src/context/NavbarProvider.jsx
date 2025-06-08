@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState } from "react";
 
 const NavbarContext = createContext();
 const NavbarProvider = ({ children }) => {
-  const [navActive, setNavActive] = useState(false);
+  const [navActive, setNavActive] = useState(true);
 
   return (
     <NavbarContext.Provider value={{ navActive, setNavActive }}>

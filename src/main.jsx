@@ -8,13 +8,11 @@ import NavbarProvider from "./context/NavbarProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter>
       <NavbarProvider>
         <div className="overflow-x-hidden">
           <App />
-          <MobileNav />
+          {/* <MobileNav /> */}
         </div>
       </NavbarProvider>
-    </BrowserRouter>
   </StrictMode>
 );
