@@ -11,9 +11,9 @@ const App = () => {
       <Routes>
         <Route element={<WithNavbar />}>
           <Route path="/menu" element={<Menu />} />
-          <Route path="/profile" element={<>pro</>} />
-          <Route path="/orders" element={<>pro</>} />
-          <Route path="/about" element={<>pro</>} />
+          <Route path="/profile" element={<>profile</>} />
+          <Route path="/orders" element={<>orders</>} />
+          <Route path="/about" element={<>about</>} />
           <Route path="/ordercallback" element={<>orderc</>} />
           <Route path="/orderstatus" element={<>orders</>} />
         </Route>

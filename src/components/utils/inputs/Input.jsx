@@ -1,12 +1,19 @@
 import React from "react";
 
-const Input = ({ placeholder }) => {
+const Input = ({ placeholder, className = '', icon }) => {
   return (
-    <input
-      className="text-center py-4 rounded-full w-10/12 m-auto border-2 border-[#aaa]"
-      type="text"
-      placeholder={placeholder}
-    />
+    <>
+      <div
+        className={`flex justify-end items-center gap-2 bg-white text-right px-5 py-4 rounded-full w-10/12 m-auto border-2 border-[#aaa] ${className}`}
+      >
+        <input
+          className="all-unset flex-1 w-full"
+          type="text"
+          placeholder={placeholder}
+          />
+          {icon != undefined && icon}
+      </div>
+    </>
   );
 };
 

@@ -11,7 +11,6 @@ createRoot(document.getElementById("root")).render(
       <NavbarProvider>
         <div className="overflow-x-hidden">
           <App />
-          {/* <MobileNav /> */}
         </div>
       </NavbarProvider>
   </StrictMode>

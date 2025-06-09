@@ -1,12 +1,18 @@
 import React from 'react'
 import { CiCoffeeCup } from 'react-icons/ci'
+import { TiTick } from 'react-icons/ti'
 
 
-const Item = ({ active , key }) => {
+const Item = ({ active, key }) => {
     return (
         <>
-            <div key={key} className={`w-10 h-10 center bg-myneutral rounded-full ${active ? "" : "opacity-20"}`}>
+            <div key={key} className={`w-10 h-10 center bg-myneutral rounded-full relative ${active ? "" : "opacity-20"}`}>
                 <CiCoffeeCup size={30} />
+                {active &&
+                    <div className='absolute w-4 h-4 flex justify-center items-center bg-green-500 rounded-full bottom-0 right-0'>
+                        <TiTick size={14} />
+                    </div>
+                }
             </div>
         </>
     )
@@ -20,7 +26,7 @@ const Reward = () => {
                     {
                         [1, 2, 3, 4].map((index) => {
                             return (
-                                <Item key={index}/>
+                                <Item active={index === 1} key={index} />
                             )
                         })
                     }

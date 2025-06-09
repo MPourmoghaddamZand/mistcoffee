@@ -1,5 +1,6 @@
 import React from 'react'
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
@@ -10,9 +11,11 @@ const Navbar = () => {
             <div className=''>
                 <h1 className=' font-trajan text-4xl font-semibold'>Mist Cafe</h1>
             </div>
-            <div>
-                <FiSearch size={30} />
-            </div>
+            <Link to='/search'>
+                <div>
+                    <FiSearch size={30} />
+                </div>
+            </Link>
         </nav>
     )
 }
