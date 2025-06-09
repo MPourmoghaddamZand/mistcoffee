@@ -50,7 +50,7 @@ const MobileNav = () => {
 
   return (
     <div className="fixed bottom-5 h-16 w-full flex justify-center items-center z-50">
-      <div className="bg-myhardbrown h-full w-10/12 shadow py-3 rounded-[20px] relative">
+      <div className="bg-myhardbrown h-full w-10/12 shadow py-3 rounded-[20px] relative border-[4px] border-mysecondary">
         <ul className="flex justify-evenly items-center relative z-10">
           <div
             className="absolute -translate-y-[37px] w-12 h-12 bg-mysecondary rounded-full transition-all duration-300 ease-in-out"
