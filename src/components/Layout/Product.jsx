@@ -12,7 +12,7 @@ const StyledEllipse5 = {
 const ProductBox = ({ title, detil, img, price }) => {
   return (
     <div className="bg-myprimary p-[3px] rounded-[32px] relative">
-      <div className="bg-myhardbrown flex flex-col justify-center items-center  round p-4 text-center">
+      <div className="bg-myhardbrown flex flex-col justify-between items-center round p-4 text-center h-64">
         <div style={StyledEllipse5} className="w-4/5 drop-shadow-[0px_0px_2px_#000] bg-white rounded-full p-2 absolute -top-10">
           <img className="aspect-square" src={img} alt="" />
         </div>
@@ -50,7 +50,7 @@ const Product = () => {
 export const ProductSearch = () => {
   return (
     <div className="flex">
-      <div className="flex flex-col gap-14 p-3 pt-10">
+      <div className="flex flex-col gap-14 p-3 pt-10 flex-1" >
         {[0, 1, 2, 3].map((item, index) => {
           return (
             <ProductBox
@@ -62,12 +62,12 @@ export const ProductSearch = () => {
           );
         })}
       </div>
-      <div className="flex flex-col gap-14 p-3 pt-10 mt-20">
+      <div className="flex flex-col gap-14 p-3 pt-10 mt-20 flex-1">
         {[0, 1, 2, 3].map((item, index) => {
           return (
             <ProductBox
               title={"item2"}
-              detil={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+              detil={"Lorem ipsum dolor sit amet consectetur "}
               price={90000}
               img={"/images/esp.png"}
             />

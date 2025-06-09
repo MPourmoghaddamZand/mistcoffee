@@ -26,9 +26,11 @@ export default {
         trajan: 'Trajan Pro',
         ray: 'ray',
         rayreg: 'ray-reg',
+      },
+       backgroundImage: {
+        'hero-cafe': "url('public/hero.webp')",
       }
     },
   },
   plugins: [],
 }
-
