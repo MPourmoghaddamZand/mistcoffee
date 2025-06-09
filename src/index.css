@@ -2,9 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-    @apply font-[Ray];
+@font-face {
+    font-family: 'ray';
+    src: url('../public/fonts/Ray-Light.ttf');
+    font-weight: 300;
 }
+
+@font-face {
+    font-family: 'ray';
+    src: url('../public/fonts/Ray.ttf');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'ray-reg';
+    src: url('../public/fonts/Ray-Medium.ttf');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'ray';
+    src: url('../public/fonts/Ray-Bold.ttf');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'ray';
+    src: url('../public/fonts/Ray-ExtraBlack.ttf');
+    font-weight: 900; }
+
+* {
+    @apply font-rayreg
+}
+
+.font-black , .font-bold{
+    @apply font-ray
+}
+
 
 .center {
     @apply grid place-content-center
@@ -15,8 +49,8 @@
 }
 
 
-.all-unset{
-    all: unset;   
+.all-unset {
+    all: unset;
 }
 
 @layer utilities {

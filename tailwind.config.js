@@ -24,6 +24,8 @@ export default {
       },
       fontFamily: {
         trajan: 'Trajan Pro',
+        ray: 'ray',
+        rayreg: 'ray-reg',
       }
     },
   },
