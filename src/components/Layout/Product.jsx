@@ -11,8 +11,8 @@ const StyledEllipse5 = {
 
 const ProductBox = ({ title, detil, img, price }) => {
   return (
-    <div style={{ background: 'black' }} className="!bg-myprimary p-[3px] rounded-[32px] relative">
-      <div style={{ background: 'black' }} className="!bg-myhardbrown flex flex-col justify-center items-center  round p-4 text-center">
+    <div className="bg-myprimary p-[3px] rounded-[32px] relative">
+      <div className="bg-myhardbrown flex flex-col justify-center items-center  round p-4 text-center">
         <div style={StyledEllipse5} className="w-4/5 drop-shadow-[0px_0px_2px_#000] bg-white rounded-full p-2 absolute -top-10">
           <img className="aspect-square" src={img} alt="" />
         </div>
