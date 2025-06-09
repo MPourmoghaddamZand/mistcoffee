@@ -11,12 +11,12 @@ const StyledEllipse5 = {
 
 const ProductBox = ({ title, detil, img, price }) => {
   return (
-    <div style={{ background: linierbackground }} className=" p-[3px] rounded-[32px] relative">
-      <div style={{ background: linierGradient }} className="flex flex-col justify-center items-center  round p-4 text-center">
-        <div style={StyledEllipse5} className="w-3/5 drop-shadow-[0px_0px_2px_#000] bg-white rounded-full p-2 absolute -top-10">
+    <div style={{ background: 'black' }} className="!bg-myprimary p-[3px] rounded-[32px] relative">
+      <div style={{ background: 'black' }} className="!bg-myhardbrown flex flex-col justify-center items-center  round p-4 text-center">
+        <div style={StyledEllipse5} className="w-4/5 drop-shadow-[0px_0px_2px_#000] bg-white rounded-full p-2 absolute -top-10">
           <img className="aspect-square" src={img} alt="" />
         </div>
-        <div className="pt-[6vh]"> {/* Space */} </div>
+        <div className="pt-[9vh]"> {/* Space */} </div>
         <div>
           <h2 className="text-mybase font-black text-2xl">{title}</h2>
           <h4 className="text-white/60 text-sm">{detil}</h4>
@@ -37,7 +37,7 @@ const Product = () => {
         return (
           <ProductBox
             title={"item1"}
-            detil={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+            detil={"Lorem ipsum dolor sit "}
             price={90000}
             img={"/images/esp.png"}
           />
@@ -55,7 +55,7 @@ export const ProductSearch = () => {
           return (
             <ProductBox
               title={"item1"}
-              detil={"Lorem ipsum dolor sit amet consectetur adipisicing elit."}
+              detil={"Lorem ipsum dolor sit"}
               price={90000}
               img={"/images/esp.png"}
             />
