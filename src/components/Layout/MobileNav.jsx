@@ -49,43 +49,43 @@ const MobileNav = () => {
   }, [active, window.innerWidth]);
 
   return (
-    <div className="fixed bottom-5 h-16 w-full flex justify-center items-center z-50">
-      <div className="bg-myhardbrown h-full w-10/12 shadow py-3 rounded-[20px] relative border-[4px] border-mysecondary">
-        <ul className="flex justify-evenly items-center relative z-10">
-          <div
-            className="absolute -translate-y-[37px] w-12 h-12 bg-mysecondary rounded-full transition-all duration-300 ease-in-out"
-            style={{ left: `${circlePos}px` }}
-          />
-          {navMenu.map((item, index) => (
-            <li
-              key={index}
-              ref={(el) => (itemRefs.current[index] = el)}
-              className="text-white text-lg flex flex-col items-center cursor-pointer relative"
-              onClick={() => setActive(index)}
-            >
-              <Link to={item.path} className="flex flex-col items-center">
-                <div
-                  className={`transition-all duration-500 ${
-                    active === index ? "-translate-y-7" : ""
-                  }`}
-                >
-                  {item.icon}
-                </div>
-                <span
-                  className={`transition-all duration-300 font-[iransans] font-thin text-sm ${
-                    active === index
+    <>
+      <div className="fixed bottom-5 h-16 w-full flex justify-center items-center z-50">
+        <div className="bg-myhardbrown h-full w-10/12 shadow py-3 rounded-[20px] relative border-[4px] border-mysecondary">
+          <ul className="flex justify-evenly items-center relative z-10">
+            <div
+              className="absolute -translate-y-[37px] w-12 h-12 bg-mysecondary rounded-full transition-all duration-300 ease-in-out"
+              style={{ left: `${circlePos}px` }}
+            />
+            {navMenu.map((item, index) => (
+              <li
+                key={index}
+                ref={(el) => (itemRefs.current[index] = el)}
+                className="text-white text-lg flex flex-col items-center cursor-pointer relative"
+                onClick={() => setActive(index)}
+              >
+                <Link to={item.path} className="flex flex-col items-center">
+                  <div
+                    className={`transition-all duration-500 ${active === index ? "-translate-y-7" : ""
+                      }`}
+                  >
+                    {item.icon}
+                  </div>
+                  <span
+                    className={`transition-all duration-300 font-[iransans] font-thin text-sm ${active === index
                       ? "opacity-100 -translate-y-4"
                       : "opacity-0 translate-y-5"
-                  }`}
-                >
-                  {item.name}
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+                      }`}
+                  >
+                    {item.name}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

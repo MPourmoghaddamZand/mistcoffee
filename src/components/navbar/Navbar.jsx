@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <nav className='w-full h-24 flex items-center justify-between px-7 text-myprimary'>
+        <nav className='fixed top-0 bg-myback z-50 w-full h-24 flex items-center justify-between px-7 text-myprimary'>
             <div>
                 <FiShoppingCart size={30} />
             </div>

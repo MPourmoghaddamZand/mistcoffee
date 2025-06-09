@@ -8,10 +8,10 @@ import NavbarProvider from "./context/NavbarProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-      <NavbarProvider>
-        <div className="overflow-x-hidden">
-          <App />
-        </div>
-      </NavbarProvider>
+    <NavbarProvider>
+      <div className="bg-myback overflow-x-hidden">
+        <App />
+      </div>
+    </NavbarProvider>
   </StrictMode>
 );
