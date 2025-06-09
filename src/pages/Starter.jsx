@@ -24,7 +24,7 @@ const NameSection = () => {
 const InputSection = () => {
     return (
         <div className="flex flex-col w-full gap-4 mt-8">
-            <Input placeholder={"شماره تلفن"} />
+            <Input placeholder={"شماره تلفن"} className="!text-center" icon={''}/>
             <Button link={"/menu"}>بزن بریم</Button>
         </div>
     );
