@@ -27,9 +27,9 @@ export default {
         ray: 'ray',
         rayreg: 'ray-reg',
       },
-       backgroundImage: {
-        'hero-cafe': "url('public/hero.webp')",
-      }
+      backgroundImage: {
+  'hero-cafe': "url('/hero.webp')",
+}
     },
   },
   plugins: [],

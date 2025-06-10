@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Menu from "./pages/Menu";
 import Search from "./pages/Search";
 import { WithNavbar, WithoutNavbar } from "./components/utils/WithNavBar";
+import Profile from "./pages/Profile";
 
 const App = () => {
   return (
@@ -11,7 +12,7 @@ const App = () => {
       <Routes>
         <Route element={<WithNavbar />}>
           <Route path="/menu" element={<Menu />} />
-          <Route path="/profile" element={<>profile</>} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/orders" element={<>orders</>} />
           <Route path="/about" element={<>about</>} />
           <Route path="/ordercallback" element={<>orderc</>} />

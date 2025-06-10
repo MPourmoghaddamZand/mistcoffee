@@ -2,7 +2,7 @@ import React from 'react'
 import { IoArrowBackCircleOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 
-const SecNavbar = ({ title , path }) => {
+const SecNavbar = ({ title , path='/menu' }) => {
     return (
         <nav className='grid grid-cols-3 place-items-center'>
             <div>
