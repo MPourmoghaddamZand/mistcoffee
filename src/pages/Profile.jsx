@@ -31,21 +31,21 @@ const NumberOfPurchace = ({ number }) => {
 
 const Profile = () => {
   return (
-    <div className="w-full min-h-screen h-full bg-myback relative py-5">
+    <div className="w-full min-h-screen bg-myback relative py-5 h-screen">
       <SecNavbar title={"پروفایل کاربری"} />
-      <div className="w-full m-auto mt-5  p-5 flex flex-col items-center gap-5">
-        <div>
+      <div className="w-full m-auto px-5 flex flex-col items-center gap-4">
+        <div className="w-24">
           <img src="/ProfImage.png" alt="" />
         </div>
         <InputLable
           title={"نام  و نام خانوادگی"}
           placeholder={"نام کاربری را وارد کنید"}
-          className="py-1"
+          className="!py-1"
         />
         <InputLable
           title={"شماره تلفن"}
           placeholder={"شماره خود را وارد کنید"}
-          className="py-1"
+          className="!py-1"
         />
         <Reward />
         <NumberOfPurchace number={5} />
