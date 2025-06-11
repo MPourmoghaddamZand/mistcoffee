@@ -33,7 +33,7 @@ const Profile = () => {
   return (
     <div className="w-full min-h-screen bg-myback relative py-5 h-screen">
       <SecNavbar title={"پروفایل کاربری"} />
-      <div className="w-full m-auto px-5 flex flex-col items-center gap-4">
+      <div className="w-full m-auto px-5 flex flex-col items-center gap-6">
         <div className="w-24">
           <img src="/ProfImage.png" alt="" />
         </div>

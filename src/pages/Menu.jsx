@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Category from "../components/Layout/Category";
 import Hero from "../components/Layout/Hero";
 import Reward from "../components/Layout/Reward";
@@ -7,8 +7,6 @@ import Navbar from "../components/navbar/Navbar";
 import { useNavbarContext } from "../context/NavbarProvider";
 
 const Menu = () => {
-
-
   return (
     <div className="w-full min-h-screen h-full bg-myback relative">
       <Navbar />

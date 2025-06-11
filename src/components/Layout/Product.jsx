@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import esp from "/images/esp.png";
 import Button from "../utils/buttons/Button";
 import Toman from "../utils/Toman";
+import ProductsInfo from "./ProductInfo";
+import productList from "../../data/products.json";
 
 const linierGradient =
   "linear-gradient(215deg, #513623 50%, #6A4A34 80%, #6F4E37 100%)";
@@ -36,9 +38,9 @@ const ProductBox = ({ title, detail, img, price }) => {
   );
 };
 
-const ProductBoxVertical = ({ title, detail, img, price }) => {
+const ProductBoxVertical = ({ title, detail, img, price, onClick }) => {
   return (
-    <div className="bg-myprimary p-[3px] rounded-[32px] relative">
+    <div className="bg-myprimary p-[3px] rounded-[32px] relative" onClick={onClick}>
       <div className="bg-myhardbrown flex flex-col justify-between items-center round p-4 text-right">
         <div className="flex w-full">
           <div className="w-full drop-shadow-[0px_0px_2px_#000] relative ">
@@ -67,19 +69,27 @@ const ProductBoxVertical = ({ title, detail, img, price }) => {
 };
 
 const Product = () => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
   return (
-    <div className="flex flex-col gap-12 p-5 pt-10">
-      {[0, 1, 2, 3].map((item, index) => {
-        return (
-          <ProductBoxVertical
-            title={"اسپرسو"}
-            detail={"لاین 60/40 عربیــــــکا در تعم "}
-            price={90000}
-            img={"/images/esp.png"}
-          />
-        );
-      })}
-    </div>
+    <>
+      {selectedProduct ? (
+        <ProductsInfo product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+      ) :
+        <div className="flex flex-col gap-12 p-5 pt-10">
+          {productList.map((product, index) => {
+            return (
+              <ProductBoxVertical
+                title={product.title}
+                detail={product.detail}
+                price={product.price}
+                img={product.img}
+                onClick={() => setSelectedProduct(product)}
+              />
+            );
+          })}
+        </div>
+      }
+    </>
   );
 };
 
@@ -87,29 +97,32 @@ export const ProductSearch = () => {
   return (
     <div className="flex">
       <div className="flex flex-col gap-14 p-3 pt-10 flex-1">
-        {[0, 1, 2, 3].map((item, index) => {
-          return (
+        {productList
+          .filter((_, index) => index % 2 === 0) // ایندکس‌های زوج
+          .map((product, index) => (
             <ProductBox
-              title={"اسپرسو"}
-              detail={"لاین 60/40 عربیــــــکا در تعم "}
-              price={90000}
-              img={"/images/esp.png"}
+              key={product.id}
+              title={product.title}
+              detail={product.detail}
+              price={product.price}
+              img={product.img}
             />
-          );
-        })}
+          ))}
       </div>
       <div className="flex flex-col gap-14 p-3 pt-10 mt-20 flex-1">
-        {[0, 1, 2, 3].map((item, index) => {
-          return (
+        {productList
+          .filter((_, index) => index % 2 === 1) // ایندکس‌های فرد
+          .map((product, index) => (
             <ProductBox
-              title={"اسپرسو"}
-              detail={"لاین 60/40 عربیــــــکا در تعم "}
-              price={90000}
-              img={"/images/esp.png"}
+              key={product.id}
+              title={product.title}
+              detail={product.detail}
+              price={product.price}
+              img={product.img}
             />
-          );
-        })}
+          ))}
       </div>
+
     </div>
   );
 };
