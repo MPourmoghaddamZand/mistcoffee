@@ -1,11 +1,13 @@
 import ReactDOM from "react-dom";
 import SecNavbar from "../navbar/SecNavbar";
 import Spliter from "../utils/Spliter";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Toman from "../utils/Toman";
 import InputNumber from "../utils/inputs/InputNumber";
 import { FaShoppingCart } from "react-icons/fa";
 import Button from "../utils/buttons/Button";
+import { CartContext } from "../../context/CartProvider";
+import { FiShoppingCart } from "react-icons/fi";
 
 const StyledEllipse5 = {
   boxShadow: "0px 0px 13px rgba(0, 0, 0, 0.60) inset",
@@ -124,6 +126,15 @@ const LineCoffee = () => {
 };
 
 const ProductInfo = ({ product, onClose }) => {
+  const { addProduct, cart, totalQuantity } = useContext(CartContext);
+  const initialQuantity =
+    cart.find((item) => item.id === product.id)?.quantity || 0;
+  const [quantity, setQuantity] = useState(initialQuantity);
+  useEffect(() => {
+    const updatedQty =
+      cart.find((item) => item.id === product.id)?.quantity || 0;
+    setQuantity(updatedQty);
+  }, [cart, product.id]);
   return ReactDOM.createPortal(
     <div className="w-full h-screen flex flex-col justify-between bg-myback fixed inset-0 z-[999] py-5">
       <SecNavbar title={"اطلاعات محصول"} onClose={onClose} invert />
@@ -151,11 +162,20 @@ const ProductInfo = ({ product, onClose }) => {
             {product.price}
           </h3>
         </div>
-        <InputNumber />
+        <InputNumber
+          value={quantity}
+          setValue={setQuantity}
+          product={product}
+        />
       </div>
       <div className="flex items-center justify-center gap-2 p-5 drop-shadow-lg">
-        <div className="w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
-          <FaShoppingCart className="pr-[2px]" size={28} color="white" />
+        <div className="relative w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
+          <FiShoppingCart className="pr-[2px]" size={28} color="white" />
+          {totalQuantity > 0 && (
+            <div className="absolute top-3 right-2 w-5 h-5 text-sm pt-[3px] bg-white text-myhardbrown border-2 border-myhardbrown flex justify-center items-center rounded-full font-[700]">
+              {totalQuantity}
+            </div>
+          )}
         </div>
         <Button>افزودن به سبد خرید</Button>
       </div>

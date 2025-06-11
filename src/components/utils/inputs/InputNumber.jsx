@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import { FaCircle, FaShoppingCart } from "react-icons/fa";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
+import { useCartContext } from "../../../context/CartProvider";
 
-const InputNumber = () => {
-  const [value, setValue] = useState(0);
-
+const InputNumber = ({ value, setValue, product, className = "" }) => {
+  const { addProduct, removeProduct } = useCartContext();
   const handleChange = (change) => {
     if (change === "plus") {
       setValue((prev) => prev + 1);
+      addProduct(product, 1);
     } else if (value > 0 && change === "minus") {
       setValue((prev) => prev - 1);
+      removeProduct(product.id);
     }
   };
 
   return (
-    <div className="p-3 drop-shadow-lg px-5 rounded-full flex  items-center justify-between gap-5 bg-white">
+    <div
+      className={`p-2 drop-shadow-lg px-5 rounded-full flex  items-center justify-between gap-5 bg-white ${className}`}
+    >
       <FaCirclePlus
         size={36}
         color="#B67C47"
@@ -27,5 +31,4 @@ const InputNumber = () => {
     </div>
   );
 };
-
 export default InputNumber;

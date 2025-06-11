@@ -4,6 +4,8 @@ import Button from "../utils/buttons/Button";
 import Toman from "../utils/Toman";
 import ProductsInfo from "./ProductInfo";
 import productList from "../../data/products.json";
+import { useCartContext } from "../../context/CartProvider";
+import InputNumber from "../utils/inputs/InputNumber";
 
 const linierGradient =
   "linear-gradient(215deg, #513623 50%, #6A4A34 80%, #6F4E37 100%)";
@@ -38,30 +40,52 @@ const ProductBox = ({ title, detail, img, price }) => {
   );
 };
 
-const ProductBoxVertical = ({ title, detail, img, price, onClick }) => {
+const ProductBoxVertical = ({ product, onClick }) => {
+  const { cart } = useCartContext();
+  const initialQuantity =
+    cart.find((item) => item.id === product.id)?.quantity || 0;
+  const [quantity, setQuantity] = useState(initialQuantity);
   return (
-    <div className="bg-myprimary p-[3px] rounded-[32px] relative" onClick={onClick}>
+    <div
+      className="bg-myprimary p-[3px] rounded-[32px] relative"
+      onClick={onClick}
+    >
       <div className="bg-myhardbrown flex flex-col justify-between items-center round p-4 text-right">
         <div className="flex w-full">
           <div className="w-full drop-shadow-[0px_0px_2px_#000] relative ">
             <img
               style={StyledEllipse5}
               className="w-10/12 max-w-[140px] p-1 bg-white rounded-full absolute -top-[58px]"
-              src={img}
+              src={product.img}
               alt=""
             />
           </div>
           <div className="text-white w-full flex flex-col gap-2">
-            <h1 className="text-3xl font-black">{title}</h1>
-            <h4 className="text-[#888]">{detail}</h4>
+            <h1 className="text-3xl font-black">{product.title}</h1>
+            <h4 className="text-[#888]">{product.detail}</h4>
           </div>
         </div>
         <div className="w-full flex justify-center items-center gap-5 mt-4">
           <div className="flex gap-1 pl-2 pt-2 justify-center items-center">
             <Toman />
-            <h3 className="text-myneutral font-bold text-4xl">{price}</h3>
+            <h3 className="text-myneutral font-bold text-4xl">
+              {product.price}
+            </h3>
           </div>
-          <Button className="!py-2 !w-1/2 mr-0">{"افزودن به سبد خرید"}</Button>
+          {quantity > 0 ? (
+            <div className="" onClick={(e) => e.stopPropagation()}>
+              <InputNumber
+                value={quantity}
+                setValue={setQuantity}
+                product={product}
+                className="py-1 scale-[80%] !w-full "
+              />
+            </div>
+          ) : (
+            <Button className="!py-2 !w-1/2 mr-0">
+              {"افزودن به سبد خرید"}
+            </Button>
+          )}
         </div>
       </div>
     </div>
@@ -73,22 +97,22 @@ const Product = () => {
   return (
     <>
       {selectedProduct ? (
-        <ProductsInfo product={selectedProduct} onClose={() => setSelectedProduct(null)} />
-      ) :
+        <ProductsInfo
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      ) : (
         <div className="flex flex-col gap-12 p-5 pt-10">
           {productList.map((product, index) => {
             return (
               <ProductBoxVertical
-                title={product.title}
-                detail={product.detail}
-                price={product.price}
-                img={product.img}
+                product={product}
                 onClick={() => setSelectedProduct(product)}
               />
             );
           })}
         </div>
-      }
+      )}
     </>
   );
 };
@@ -122,7 +146,6 @@ export const ProductSearch = () => {
             />
           ))}
       </div>
-
     </div>
   );
 };
