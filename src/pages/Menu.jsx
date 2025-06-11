@@ -4,7 +4,6 @@ import Hero from "../components/Layout/Hero";
 import Reward from "../components/Layout/Reward";
 import Product from "../components/Layout/Product";
 import Navbar from "../components/navbar/Navbar";
-import { useNavbarContext } from "../context/NavbarProvider";
 
 const Menu = () => {
   return (

@@ -125,7 +125,7 @@ const LineCoffee = () => {
 
 const ProductInfo = ({ product, onClose }) => {
   return ReactDOM.createPortal(
-    <div className="w-full h-screen flex flex-col bg-myback fixed inset-0 z-[999] py-5">
+    <div className="w-full h-screen flex flex-col justify-between bg-myback fixed inset-0 z-[999] py-5">
       <SecNavbar title={"اطلاعات محصول"} onClose={onClose} invert />
       <div className="w-full bg-myprimary h-60 rounded-b-[40px] absolute top-0 -z-10">
         <div
@@ -155,7 +155,7 @@ const ProductInfo = ({ product, onClose }) => {
       </div>
       <div className="flex items-center justify-center gap-2 p-5 drop-shadow-lg">
         <div className="w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
-          <FaShoppingCart size={24} color="white"/>
+          <FaShoppingCart className="pr-[2px]" size={28} color="white" />
         </div>
         <Button>افزودن به سبد خرید</Button>
       </div>

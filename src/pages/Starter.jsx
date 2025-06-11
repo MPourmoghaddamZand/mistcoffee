@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Input from "../components/utils/Inputs/Input";
 import Button from "../components/utils/buttons/Button";
-import { useNavbarContext } from "../context/NavbarProvider";
 
 const NameSection = () => {
      

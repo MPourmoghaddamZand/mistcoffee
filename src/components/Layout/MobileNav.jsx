@@ -3,7 +3,6 @@ import { CgProfile } from "react-icons/cg";
 import { FaHome } from "react-icons/fa";
 import { HiInformationCircle, HiViewGrid } from "react-icons/hi";
 import { Link, useLocation } from "react-router-dom";
-import { useNavbarContext } from "../../context/NavbarProvider";
 
 const navMenu = [
   { name: "خانه", path: "/menu", icon: <FaHome size={30} /> },
@@ -17,21 +16,12 @@ const navMenu = [
 ];
 
 const MobileNav = () => {
-  const { navActive, setNavActive } = useNavbarContext();
-  if (!navActive) return null;
 
   const location = useLocation();
   const [active, setActive] = useState(0);
   const [circlePos, setCirclePos] = useState(0);
   const itemRefs = useRef([]);
 
-  // به‌روزرسانی ایندکس فعال با توجه به آدرس
-  useEffect(() => {
-    const index = navMenu.findIndex((item) => item.path === location.pathname);
-    if (index !== -1) {
-      setActive(index);
-    }
-  }, [location.pathname]);
 
   // محاسبه مکان دایره
   useEffect(() => {
