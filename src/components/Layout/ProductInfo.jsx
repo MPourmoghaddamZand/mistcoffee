@@ -8,6 +8,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import Button from "../utils/buttons/Button";
 import { CartContext } from "../../context/CartProvider";
 import { FiShoppingCart } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const StyledEllipse5 = {
   boxShadow: "0px 0px 13px rgba(0, 0, 0, 0.60) inset",
@@ -35,9 +36,8 @@ const SizeCoffeeItems = ({ title, icon, active, onclick }) => {
   return (
     <div
       onClick={onclick}
-      className={`flex flex-1 justify-center items-center gap-2 py-2 rounded-full drop-shadow-md cursor-pointer ${
-        active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
-      }`}
+      className={`flex flex-1 justify-center items-center gap-2 py-2 rounded-full drop-shadow-md cursor-pointer ${active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
+        }`}
     >
       <div>
         <img src={icon} className={`w-6 h-6 ${active && "invert"}`} alt="" />
@@ -95,9 +95,8 @@ const LineCoffeeItems = ({ title, icon, active, onclick }) => {
   return (
     <div
       onClick={onclick}
-      className={`flex justify-center items-center gap-2 py-2 min-w-32 rounded-full drop-shadow-md cursor-pointer ${
-        active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
-      }`}
+      className={`flex justify-center items-center gap-2 py-2 min-w-32 rounded-full drop-shadow-md cursor-pointer ${active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
+        }`}
     >
       <h3 className="font-black pt-1">{title}</h3>
     </div>
@@ -169,15 +168,17 @@ const ProductInfo = ({ product, onClose }) => {
         />
       </div>
       <div className="flex items-center justify-center gap-2 p-5 drop-shadow-lg">
-        <div className="relative w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
-          <FiShoppingCart className="pr-[2px]" size={28} color="white" />
-          {totalQuantity > 0 && (
-            <div className="absolute top-3 right-2 w-5 h-5 text-sm pt-[3px] bg-white text-myhardbrown border-2 border-myhardbrown flex justify-center items-center rounded-full font-[700]">
-              {totalQuantity}
-            </div>
-          )}
-        </div>
-        <Button>افزودن به سبد خرید</Button>
+        <Link className="w-full flex gap-2" to='/shopcart'>
+          <div className="relative w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
+            <FiShoppingCart className="pr-[2px]" size={28} color="white" />
+            {totalQuantity > 0 && (
+              <div className="absolute top-3 right-2 w-5 h-5 text-sm pt-[3px] bg-white text-myhardbrown border-2 border-myhardbrown flex justify-center items-center rounded-full font-[700]">
+                {totalQuantity}
+              </div>
+            )}
+          </div>
+          <Button>افزودن به سبد خرید</Button>
+        </Link>
       </div>
     </div>,
     document.getElementById("modal-root")

@@ -5,6 +5,7 @@ import Menu from "./pages/Menu";
 import Search from "./pages/Search";
 import { WithNavbar, WithoutNavbar } from "./components/utils/WithNavBar";
 import Profile from "./pages/Profile";
+import ShopCart from "./pages/ShopCart";
 
 const App = () => {
   return (
@@ -12,7 +13,7 @@ const App = () => {
       <Routes>
         <Route element={<WithNavbar />}>
           <Route path="/menu" element={<Menu />} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/orders" element={<>orders</>} />
           <Route path="/about" element={<>about</>} />
           <Route path="/ordercallback" element={<>orderc</>} />
@@ -20,7 +21,7 @@ const App = () => {
         </Route>
         <Route element={<WithoutNavbar />}>
           <Route path="/" element={<Starter />} />
-          <Route path="/shopcart" element={<>shop</>} />
+          <Route path="/shopcart" element={<ShopCart />} />
           <Route path="/search" element={<Search />} />
         </Route>
       </Routes>
