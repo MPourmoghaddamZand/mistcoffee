@@ -67,20 +67,14 @@ const ProductBoxVertical = ({ product, onClick }) => {
               {product.sizes[0]?.price || product.price}
             </h3>
           </div>
-          {quantity > 0 ? (
-            <div className="" onClick={(e) => e.stopPropagation()}>
-              <InputNumber
-                value={quantity}
-                setValue={setQuantity}
-                product={product}
-                className="py-1 scale-[80%] !w-full "
-              />
-            </div>
-          ) : (
-            <Button className="!py-2 !w-1/2 mr-0">
-              {"افزودن به سبد خرید"}
-            </Button>
-          )}
+          <Button className="!py-2 !w-1/2 mr-0 flex flex-row-reverse justify-center items-center gap-2">
+            {"افزودن به سبد خرید"}
+            {quantity > 0 && (
+              <div className="w-6 h-6 flex pt-[2px] justify-center items-center bg-myprimary rounded-full">
+                {quantity}
+              </div>
+            )}
+          </Button>
         </div>
       </div>
     </div>

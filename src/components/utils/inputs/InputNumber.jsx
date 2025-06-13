@@ -3,7 +3,14 @@ import { FaCircle, FaShoppingCart } from "react-icons/fa";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
 import { useCartContext } from "../../../context/CartProvider";
 
-const InputNumber = ({ value, setValue, product, className = "" }) => {
+const InputNumber = ({
+  value,
+  setValue,
+  product,
+  className = "",
+  iconSize = 36,
+  textSize = "3xl",
+}) => {
   const { addProduct, removeProduct } = useCartContext();
   const handleChange = (change) => {
     if (change === "plus") {
@@ -12,7 +19,7 @@ const InputNumber = ({ value, setValue, product, className = "" }) => {
     } else if (value > 0 && change === "minus") {
       setValue((prev) => prev - 1);
       // اگر مقدار جدید صفر شد، آیتم را حذف کن
-        removeProduct(product);
+      removeProduct(product);
     }
   };
 
@@ -21,14 +28,16 @@ const InputNumber = ({ value, setValue, product, className = "" }) => {
       className={`p-2 drop-shadow-lg px-5 rounded-full flex  items-center justify-between gap-5 bg-white ${className}`}
     >
       <FaCirclePlus
-        size={36}
+        size={iconSize}
         color="#B67C47"
         onClick={() => handleChange("plus")}
       />
       <div>
-        <p className="text-4xl pt-1 font-black">{value}</p>
+        <p className={`text-${textSize} pt-1 font-black text-center w-6`}>
+          {value}
+        </p>
       </div>
-      <FaCircleMinus size={36} onClick={() => handleChange("minus")} />
+      <FaCircleMinus size={iconSize} onClick={() => handleChange("minus")} />
     </div>
   );
 };
