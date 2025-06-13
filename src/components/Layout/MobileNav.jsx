@@ -16,18 +16,16 @@ const navMenu = [
 ];
 
 const MobileNav = () => {
-
   const location = useLocation();
   const [active, setActive] = useState(0);
   const [circlePos, setCirclePos] = useState(0);
   const itemRefs = useRef([]);
 
-
   // محاسبه مکان دایره
   useEffect(() => {
     const timeout = setTimeout(() => {
       const activeItem = itemRefs.current[active];
-      if (activeItem) {
+      if (activeItem && activeItem.parentElement) {
         const rect = activeItem.getBoundingClientRect();
         const parentRect = activeItem.parentElement.getBoundingClientRect();
         const left = rect.left - parentRect.left + rect.width / 2 - 24;
@@ -56,16 +54,18 @@ const MobileNav = () => {
               >
                 <Link to={item.path} className="flex flex-col items-center">
                   <div
-                    className={`transition-all duration-500 ${active === index ? "-translate-y-7" : ""
-                      }`}
+                    className={`transition-all duration-500 ${
+                      active === index ? "-translate-y-7" : ""
+                    }`}
                   >
                     {item.icon}
                   </div>
                   <span
-                    className={`transition-all duration-300 font-[iransans] font-thin text-sm ${active === index
-                      ? "opacity-100 -translate-y-4"
-                      : "opacity-0 translate-y-5"
-                      }`}
+                    className={`transition-all duration-300 font-[iransans] font-thin text-sm ${
+                      active === index
+                        ? "opacity-100 -translate-y-4"
+                        : "opacity-0 translate-y-5"
+                    }`}
                   >
                     {item.name}
                   </span>

@@ -9,131 +9,99 @@ import Button from "../utils/buttons/Button";
 import { CartContext } from "../../context/CartProvider";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
-
-const StyledEllipse5 = {
-  boxShadow: "0px 0px 13px rgba(0, 0, 0, 0.60) inset",
-};
-
-const size = [
-  {
-    id: 1,
-    name: "کوچک",
-    icon: "/svg/esp.svg",
-  },
-  {
-    id: 2,
-    name: "متوسط",
-    icon: "/svg/esp.svg",
-  },
-  {
-    id: 3,
-    name: "بزرگ",
-    icon: "/svg/esp.svg",
-  },
-];
-
-const SizeCoffeeItems = ({ title, icon, active, onclick }) => {
-  return (
-    <div
-      onClick={onclick}
-      className={`flex flex-1 justify-center items-center gap-2 py-2 rounded-full drop-shadow-md cursor-pointer ${active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
-        }`}
-    >
-      <div>
-        <img src={icon} className={`w-6 h-6 ${active && "invert"}`} alt="" />
-      </div>
-      <h3 className="font-black pt-1">{title}</h3>
-    </div>
-  );
-};
-
-const SizeCoffee = () => {
-  const [activeCat, setActiveCat] = useState(0);
-  return (
-    <div className=" mt-2 ">
-      <Spliter title={"اندازه کاپ"} />
-      <div className="overflow-x-auto touch-auto no-scrollbar py-2 flex gap-3 px-6 w-full">
-        {size.map((cat, index) => {
-          return (
-            <SizeCoffeeItems
-              onclick={() => setActiveCat(index)}
-              title={cat.name}
-              icon={cat.icon}
-              active={index === activeCat}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const lines = [
-  {
-    id: 1,
-    name: "60/40 عربیکا",
-    icon: "/svg/esp.svg",
-  },
-  {
-    id: 2,
-    name: "70/30",
-    icon: "/svg/esp.svg",
-  },
-  {
-    id: 3,
-    name: "50/50",
-    icon: "/svg/esp.svg",
-  },
-  {
-    id: 3,
-    name: "80/20",
-    icon: "/svg/esp.svg",
-  },
-];
-
-const LineCoffeeItems = ({ title, icon, active, onclick }) => {
-  return (
-    <div
-      onClick={onclick}
-      className={`flex justify-center items-center gap-2 py-2 min-w-32 rounded-full drop-shadow-md cursor-pointer ${active ? "bg-mysecondary text-white" : "bg-white text-mysecondary"
-        }`}
-    >
-      <h3 className="font-black pt-1">{title}</h3>
-    </div>
-  );
-};
-
-const LineCoffee = () => {
-  const [activeCat, setActiveCat] = useState(0);
-  return (
-    <div className=" mt-2 ">
-      <Spliter title={"لاین قهوه"} />
-      <div className="overflow-x-auto touch-auto no-scrollbar py-2 flex gap-3 px-6">
-        {lines.map((cat, index) => {
-          return (
-            <LineCoffeeItems
-              onclick={() => setActiveCat(index)}
-              title={cat.name}
-              icon={cat.icon}
-              active={index === activeCat}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-};
+import CircleProduct, { StyledEllipse5 } from "../utils/CircleProduct";
 
 const ProductInfo = ({ product, onClose }) => {
-  const { addProduct, cart, totalQuantity } = useContext(CartContext);
-  const initialQuantity =
-    cart.find((item) => item.id === product.id)?.quantity || 0;
-  const [quantity, setQuantity] = useState(initialQuantity);
+  const { cart, totalQuantity } = useContext(CartContext);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [selectedLine, setSelectedLine] = useState(product.lines[0]);
+  const [selectedSyrup, setSelectedSyrup] = useState(product.syrups[0]);
+  const [quantity, setQuantity] = useState(0);
+
   useEffect(() => {
-    const updatedQty =
-      cart.find((item) => item.id === product.id)?.quantity || 0;
-    setQuantity(updatedQty);
-  }, [cart, product.id]);
+    const found = cart.find(
+      (item) =>
+        item.id === product.id &&
+        item.size?.id === selectedSize.id &&
+        item.line?.id === selectedLine.id &&
+        item.syrup?.id === selectedSyrup.id
+    );
+    setQuantity(found ? found.quantity : 0);
+  }, [cart, product.id, selectedSize, selectedLine, selectedSyrup]);
+
+  // کامپوننت انتخاب سایز
+  const SizeCoffee = () => (
+    <div className="mt-2">
+      <Spliter title={"اندازه کاپ"} />
+      <div className="overflow-x-auto touch-auto no-scrollbar py-2 flex gap-3 px-6 w-full">
+        {product.sizes.map((cat, index) => (
+          <div
+            key={cat.id}
+            onClick={() => setSelectedSize(cat)}
+            className={`flex flex-1 justify-center items-center gap-2 py-2 rounded-full drop-shadow-md cursor-pointer ${
+              selectedSize.id === cat.id
+                ? "bg-mysecondary text-white"
+                : "bg-white text-mysecondary"
+            }`}
+          >
+            <div>
+              <img
+                src={"/svg/esp.svg"}
+                className={`w-6 h-6 ${selectedSize.id === cat.id && "invert"}`}
+                alt=""
+              />
+            </div>
+            <h3 className="font-black pt-1">{cat.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // کامپوننت انتخاب لاین
+  const LineCoffee = () => (
+    <div className="mt-2">
+      <Spliter title={"لاین قهوه"} />
+      <div className="overflow-x-auto touch-auto no-scrollbar py-2 flex gap-3 px-6">
+        {product.lines.map((cat, index) => (
+          <div
+            key={cat.id}
+            onClick={() => setSelectedLine(cat)}
+            className={`flex justify-center items-center gap-2 py-2 min-w-32 rounded-full drop-shadow-md cursor-pointer ${
+              selectedLine.id === cat.id
+                ? "bg-mysecondary text-white"
+                : "bg-white text-mysecondary"
+            }`}
+          >
+            <h3 className="font-black pt-1">{cat.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // کامپوننت انتخاب سیروپ
+  const SyrupCoffee = () => (
+    <div className="mt-2">
+      <Spliter title={"سیروپ"} />
+      <div className="overflow-x-auto touch-auto no-scrollbar py-2 flex gap-3 px-6">
+        {product.syrups.map((cat, index) => (
+          <div
+            key={cat.id}
+            onClick={() => setSelectedSyrup(cat)}
+            className={`flex justify-center items-center gap-2 py-2 min-w-32 rounded-full drop-shadow-md cursor-pointer ${
+              selectedSyrup.id === cat.id
+                ? "bg-mysecondary text-white"
+                : "bg-white text-mysecondary"
+            }`}
+          >
+            <h3 className="font-black pt-1">{cat.name}</h3>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
   return ReactDOM.createPortal(
     <div className="w-full h-screen flex flex-col justify-between bg-myback fixed inset-0 z-[999] py-5">
       <SecNavbar title={"اطلاعات محصول"} onClose={onClose} invert />
@@ -151,24 +119,36 @@ const ProductInfo = ({ product, onClose }) => {
           {product.title}
         </h2>
         <h5>{product.detail}</h5>
+        <div className="text-xs text-gray-500 flex flex-col items-end gap-0.5 mt-2">
+          <span>سایز: {selectedSize.name}</span>
+          <span>لاین: {selectedLine.name}</span>
+          <span>سیروپ: {selectedSyrup.name}</span>
+        </div>
       </div>
       <SizeCoffee />
       <LineCoffee />
+      <SyrupCoffee />
       <div className="flex justify-between items-center w-full px-10 pt-6">
         <div className="flex justify-center items-center">
           <Toman size={30} />
           <h3 className="text-4xl font-black text-myhardbrown pt-1">
-            {product.price}
+            {selectedSize.price}
           </h3>
         </div>
         <InputNumber
           value={quantity}
           setValue={setQuantity}
-          product={product}
+          product={{
+            ...product,
+            size: selectedSize,
+            line: selectedLine,
+            syrup: selectedSyrup,
+            price: selectedSize.price,
+          }}
         />
       </div>
       <div className="flex items-center justify-center gap-2 p-5 drop-shadow-lg">
-        <Link className="w-full flex gap-2" to='/shopcart'>
+        <Link className="w-full flex gap-2" to="/shopcart">
           <div className="relative w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
             <FiShoppingCart className="pr-[2px]" size={28} color="white" />
             {totalQuantity > 0 && (
@@ -177,7 +157,7 @@ const ProductInfo = ({ product, onClose }) => {
               </div>
             )}
           </div>
-          <Button>افزودن به سبد خرید</Button>
+          <Button>مشاهده سبد خرید</Button>
         </Link>
       </div>
     </div>,

@@ -11,7 +11,8 @@ const InputNumber = ({ value, setValue, product, className = "" }) => {
       addProduct(product, 1);
     } else if (value > 0 && change === "minus") {
       setValue((prev) => prev - 1);
-      removeProduct(product.id);
+      // اگر مقدار جدید صفر شد، آیتم را حذف کن
+        removeProduct(product);
     }
   };
 

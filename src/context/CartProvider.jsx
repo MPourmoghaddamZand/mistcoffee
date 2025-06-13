@@ -14,10 +14,20 @@ const CartProvider = ({ children }) => {
 
   const addProduct = useCallback((product, count) => {
     setCart((prev) => {
-      const exists = prev.find((item) => item.id === product.id);
+      // بررسی وجود ترکیب دقیق ویژگی‌ها
+      const exists = prev.find(
+        (item) =>
+          item.id === product.id &&
+          item.size?.id === product.size?.id &&
+          item.line?.id === product.line?.id &&
+          item.syrup?.id === product.syrup?.id
+      );
       if (exists) {
         return prev.map((item) =>
-          item.id === product.id
+          item.id === product.id &&
+          item.size?.id === product.size?.id &&
+          item.line?.id === product.line?.id &&
+          item.syrup?.id === product.syrup?.id
             ? { ...item, quantity: item.quantity + count }
             : item
         );
@@ -32,19 +42,35 @@ const CartProvider = ({ children }) => {
     console.log("Total:", totalQuantity);
   }, [cart]);
 
-  const removeProduct = useCallback((productId) => {
+  const removeProduct = useCallback((product) => {
     setCart((prev) => {
-      const exists = prev.find((item) => item.id === productId);
+      const exists = prev.find(
+        (item) =>
+          item.id === product.id &&
+          item.size?.id === product.size?.id &&
+          item.line?.id === product.line?.id &&
+          item.syrup?.id === product.syrup?.id
+      );
       if (!exists) return prev;
-
       if (exists.quantity > 1) {
         return prev.map((item) =>
-          item.id === productId
+          item.id === product.id &&
+          item.size?.id === product.size?.id &&
+          item.line?.id === product.line?.id &&
+          item.syrup?.id === product.syrup?.id
             ? { ...item, quantity: item.quantity - 1 }
             : item
         );
       } else {
-        return prev.filter((item) => item.id !== productId);
+        return prev.filter(
+          (item) =>
+            !(
+              item.id === product.id &&
+              item.size?.id === product.size?.id &&
+              item.line?.id === product.line?.id &&
+              item.syrup?.id === product.syrup?.id
+            )
+        );
       }
     });
   }, []);
