@@ -7,6 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import Button from "../components/utils/buttons/Button";
 import CartItem from "../components/Layout/CartItems";
 import Toman from "../components/utils/Toman";
+import { Link } from "react-router-dom";
 
 const ShopCart = () => {
   const { cart, totalQuantity, totalPrice } = useCartContext();
@@ -40,7 +41,9 @@ const ShopCart = () => {
                 قیمت پایانی
               </h2>
             </div>
-            <Button className="text-2xl">پرداخت و تکمیل سفارش</Button>
+            <Link className="w-full" to={"/checkout"}>
+              <Button className="text-2xl"> تکمیل سفارش</Button>
+            </Link>
           </div>
         </>
       )}

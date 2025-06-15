@@ -6,6 +6,7 @@ import Search from "./pages/Search";
 import { WithNavbar, WithoutNavbar } from "./components/utils/WithNavBar";
 import Profile from "./pages/Profile";
 import ShopCart from "./pages/ShopCart";
+import Checkout from "./pages/Checkout";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         </Route>
         <Route element={<WithoutNavbar />}>
           <Route path="/" element={<Starter />} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/shopcart" element={<ShopCart />} />
           <Route path="/search" element={<Search />} />
         </Route>

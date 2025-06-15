@@ -37,8 +37,9 @@ const ProductBox = ({ title, detail, img, price }) => {
 
 const ProductBoxVertical = ({ product, onClick }) => {
   const { cart } = useCartContext();
-  const initialQuantity =
-    cart.find((item) => item.id === product.id)?.quantity || 0;
+  const initialQuantity = cart
+    .filter((item) => item.id === product.id)
+    .reduce((sum, item) => sum + (item.quantity || 0), 0);
   const [quantity, setQuantity] = useState(initialQuantity);
   return (
     <div
