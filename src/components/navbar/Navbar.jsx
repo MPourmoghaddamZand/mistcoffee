@@ -2,17 +2,18 @@ import React from "react";
 import { FiSearch, FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartProvider";
+import { toPersianDigits } from "../../utils/formatPrice";
 
 const Navbar = () => {
   const { totalQuantity } = useCartContext();
   return (
     <nav className="fixed top-0 bg-myback z-50 w-full h-24 flex items-center justify-between px-7 text-myprimary">
       <div className="relative">
-        <Link to={'/shopcart'}>
-          <FiShoppingCart size={30} />
+        <Link to={"/shopcart"}>
+          <FiShoppingCart size={30} />{" "}
           {totalQuantity > 0 && (
             <div className="absolute top-0 -right-2 w-4 h-4 text-xs pt-[3px] bg-myaccent text-myhardbrown border-2 border-myhardbrown flex justify-center items-center rounded-full font-[700]">
-              {totalQuantity}
+              {toPersianDigits(totalQuantity)}
             </div>
           )}
         </Link>

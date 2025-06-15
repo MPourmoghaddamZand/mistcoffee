@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaCircle, FaShoppingCart } from "react-icons/fa";
 import { FaCircleMinus, FaCirclePlus } from "react-icons/fa6";
 import { useCartContext } from "../../../context/CartProvider";
+import { toPersianDigits } from "../../../utils/formatPrice";
 
 const InputNumber = ({
   value,
@@ -31,10 +32,10 @@ const InputNumber = ({
         size={iconSize}
         color="#B67C47"
         onClick={() => handleChange("plus")}
-      />
+      />{" "}
       <div>
         <p className={`text-${textSize} pt-1 font-black text-center w-6`}>
-          {value}
+          {toPersianDigits(value)}
         </p>
       </div>
       <FaCircleMinus size={iconSize} onClick={() => handleChange("minus")} />

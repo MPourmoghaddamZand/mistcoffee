@@ -7,6 +7,7 @@ import productList from "../../data/products.json";
 import { useCartContext } from "../../context/CartProvider";
 import InputNumber from "../utils/inputs/InputNumber";
 import CircleProduct, { StyledEllipse5 } from "../utils/CircleProduct";
+import { formatPersianPrice } from "../../utils/formatPrice";
 
 const linierGradient =
   "linear-gradient(215deg, #513623 50%, #6A4A34 80%, #6F4E37 100%)";
@@ -23,10 +24,12 @@ const ProductBox = ({ title, detail, img, price }) => {
         <div>
           <h2 className="text-mybase font-black text-2xl">{title}</h2>
           <h4 className="text-white/60 text-sm pt-1">{detail}</h4>
-        </div>
+        </div>{" "}
         <div className="w-full">
           <div>
-            <h3 className="text-mybase font-semibold text-2xl">{price}</h3>
+            <h3 className="text-mybase font-semibold text-2xl">
+              {formatPersianPrice(price)}
+            </h3>
           </div>
           <Button className="!py-1 !px-2 w-full"> افزودن به سبد خرید </Button>
         </div>
@@ -62,10 +65,11 @@ const ProductBoxVertical = ({ product, onClick }) => {
           </div>
         </div>
         <div className="w-full flex justify-center items-center gap-5 mt-4">
+          {" "}
           <div className="flex gap-1 pl-2 pt-2 justify-center items-center">
             <Toman />
             <h3 className="text-myneutral font-bold text-4xl">
-              {product.sizes[0]?.price || product.price}
+              {formatPersianPrice(product.sizes[0]?.price || product.price)}
             </h3>
           </div>
           <Button className="!py-2 !w-1/2 mr-0 flex flex-row-reverse justify-center items-center gap-2">
@@ -111,6 +115,7 @@ export const ProductSearch = () => {
   return (
     <div className="flex">
       <div className="flex flex-col gap-14 p-3 pt-10 flex-1">
+        {" "}
         {productList
           .filter((_, index) => index % 2 === 0) // ایندکس‌های زوج
           .map((product, index) => (
@@ -118,12 +123,13 @@ export const ProductSearch = () => {
               key={product.id}
               title={product.title}
               detail={product.detail}
-              price={product.price}
+              price={formatPersianPrice(product.price)}
               img={product.img}
             />
           ))}
       </div>
       <div className="flex flex-col gap-14 p-3 pt-10 mt-20 flex-1">
+        {" "}
         {productList
           .filter((_, index) => index % 2 === 1) // ایندکس‌های فرد
           .map((product, index) => (
@@ -131,7 +137,7 @@ export const ProductSearch = () => {
               key={product.id}
               title={product.title}
               detail={product.detail}
-              price={product.price}
+              price={formatPersianPrice(product.price)}
               img={product.img}
             />
           ))}

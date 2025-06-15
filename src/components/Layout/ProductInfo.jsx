@@ -10,6 +10,7 @@ import { CartContext } from "../../context/CartProvider";
 import { FiShoppingCart } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import CircleProduct, { StyledEllipse5 } from "../utils/CircleProduct";
+import { formatPersianPrice, toPersianDigits } from "../../utils/formatPrice";
 
 const ProductInfo = ({ product, onClose }) => {
   const { cart, totalQuantity } = useContext(CartContext);
@@ -129,10 +130,11 @@ const ProductInfo = ({ product, onClose }) => {
       <LineCoffee />
       <SyrupCoffee />
       <div className="flex justify-between items-center w-full px-10 pt-6">
+        {" "}
         <div className="flex justify-center items-center">
           <Toman size={30} />
           <h3 className="text-4xl font-black text-myhardbrown pt-1">
-            {selectedSize.price}
+            {formatPersianPrice(selectedSize.price)}
           </h3>
         </div>
         <InputNumber
@@ -150,10 +152,10 @@ const ProductInfo = ({ product, onClose }) => {
       <div className="flex items-center justify-center gap-2 p-5 drop-shadow-lg">
         <Link className="w-full flex gap-2" to="/shopcart">
           <div className="relative w-14 aspect-square flex justify-center items-center rounded-full bg-mysecondary drop-shadow-lg">
-            <FiShoppingCart className="pr-[2px]" size={28} color="white" />
+            <FiShoppingCart className="pr-[2px]" size={28} color="white" />{" "}
             {totalQuantity > 0 && (
               <div className="absolute top-3 right-2 w-5 h-5 text-sm pt-[3px] bg-white text-myhardbrown border-2 border-myhardbrown flex justify-center items-center rounded-full font-[700]">
-                {totalQuantity}
+                {toPersianDigits(totalQuantity)}
               </div>
             )}
           </div>

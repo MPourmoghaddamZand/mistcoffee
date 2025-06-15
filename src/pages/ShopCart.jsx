@@ -8,6 +8,7 @@ import Button from "../components/utils/buttons/Button";
 import CartItem from "../components/Layout/CartItems";
 import Toman from "../components/utils/Toman";
 import { Link } from "react-router-dom";
+import { formatPersianPrice } from "../utils/formatPrice";
 
 const ShopCart = () => {
   const { cart, totalQuantity, totalPrice } = useCartContext();
@@ -31,10 +32,11 @@ const ShopCart = () => {
 
           <div className="flex flex-col gap-7 justify-center items-center fixed bottom-0 w-full py-5 bg-myback">
             <div className="flex w-full justify-around items-center">
+              {" "}
               <div className="flex justify-center items-center">
                 <Toman size={32} />
                 <h2 className="text-4xl text-myprimary font-black">
-                  {totalPrice}
+                  {formatPersianPrice(totalPrice)}
                 </h2>
               </div>
               <h2 className="text-4xl text-myprimary font-black">

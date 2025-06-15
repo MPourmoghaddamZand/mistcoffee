@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import InputNumber from "../utils/inputs/InputNumber";
 import Toman from "../utils/Toman";
 import CircleProduct, { StyledEllipse5 } from "../utils/CircleProduct";
+import { formatPersianPrice } from "../../utils/formatPrice";
 
 const CartItem = ({ product, cart }) => {
   // مقدار quantity را بر اساس ترکیب دقیق ویژگی‌ها پیدا کن
@@ -42,10 +43,11 @@ const CartItem = ({ product, cart }) => {
           <p className="text-xs">لاین قهوه: {product.line?.name}</p>
         </div>
         <div>
+          {" "}
           <div className="flex justify-center h-full items-center">
             <Toman size={20} />
             <h3 className=" text-3xl font-black text-myhardbrown pt-1 self-start w-full ">
-              {product.price}
+              {formatPersianPrice(product.price)}
             </h3>
           </div>
         </div>
